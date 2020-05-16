@@ -31,7 +31,7 @@ public class DogRestController {
 			  notes = "An optional message value can be passed into this echo service, via msg query param, to use in echoed String",
 			  response = String.class)
 	
-	public String echoMessage(@ApiParam(value = "Hello", required = false) @RequestParam(value="msg", defaultValue="Mike") String msg)  {	
+	public String echoMessage(@ApiParam(value = "Hello", required = false) @RequestParam(value="msg", defaultValue="Hello") String msg)  {	
 		return "echoMessage echoed: " + msg;
 	}
 	

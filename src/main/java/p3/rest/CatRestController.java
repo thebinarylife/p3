@@ -28,7 +28,7 @@ public class CatRestController {
 			  response = String.class)
 	
 	
-	public String echoMessage(@ApiParam(value = "Hello", required = false) @RequestParam(value="msg", defaultValue="Mike") String msg) {
+	public String echoMessage(@ApiParam(value = "Hello", required = false) @RequestParam(value="msg", defaultValue="Hello") String msg) {
 			return "echoMessage echoed: " + msg;
 	}
 	
