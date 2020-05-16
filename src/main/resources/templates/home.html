@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+ <head>
+ 	<title>Security with Spring Boot</title>
+ 
+ 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+ 
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+ </head>
+ <body>
+     <h1 style="color: green">Hello! This is the Home Page!</h1>
+     <h5 style="color: limeGreen">Welcome!</h5>
+     
+	 <nav class="nav flex-column">
+	  <a class="nav-link"          th:href="@{/public}">Goto Public Page - allowed to everyone, logged in or not</a>
+	  <a class="nav-link"          th:href="@{/anonymous}">Goto Anonymous Page - should NOT be authenticated</a>
+	  <a class="nav-link active"   th:href="@{/admin}">Goto Admin Page - requires authentication</a>
+	  <a class="nav-link"          th:href="@{/cats}">Goto Cats Page</a>
+	  <a class="nav-link"          th:href="@{/dogs}">Goto Dogs Page</a>	  
+
+	 </nav> 	 
+	
+	 
+	
+	 <div sec:authorize="isAuthenticated()">
+	 	Logged user: <span sec:authentication="name"></span>
+	 	<br/>
+		Authorities: <span sec:authentication="principal.authorities"></span>
+	 	<br/>	 
+     	<form th:action="@{/logout}" method="post">
+         <input type="submit" value="Sign Out"/>
+     	</form>
+     </div>
+ </body>
+</html>
